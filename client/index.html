@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代理分享平台</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-cyan-400">代理分享平台</h1>
+            <div id="user-info">
+                <a href="/api/auth/linuxdo" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    使用 Linux.do 登录
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <section id="share-form-section" class="mb-8 p-6 bg-gray-800 rounded-lg hidden">
+                <h2 class="text-2xl font-semibold mb-4">分享一个新的节点</h2>
+                <form id="share-form">
+                    <div class="mb-4">
+                        <label for="node_text" class="block mb-2 text-sm font-medium text-gray-300">节点内容</label>
+                        <textarea id="node_text" rows="4" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 p-2.5" placeholder="粘贴你的节点文本..." required></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <label for="region" class="block mb-2 text-sm font-medium text-gray-300">地区</label>
+                            <input type="text" id="region" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2.5" placeholder="例如：日本">
+                        </div>
+                        <div>
+                            <label for="ip_type" class="block mb-2 text-sm font-medium text-gray-300">IP 类型</label>
+                            <select id="ip_type" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2.5">
+                                <option value="datacenter">机房</option>
+                                <option value="commercial">商宽</option>
+                                <option value="residential">家宽</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="remaining_traffic" class="block mb-2 text-sm font-medium text-gray-300">预计剩余流量</label>
+                            <input type="text" id="remaining_traffic" class="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2.5" placeholder="例如：100 GB">
+                        </div>
+                    </div>
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                        分享节点
+                    </button>
+                </form>
+            </section>
+
+            <section id="proxy-list-section">
+                <h2 class="text-2xl font-semibold mb-4">可用节点</h2>
+                <div id="proxy-list" class="space-y-4">
+                    <p id="loading-text">正在加载节点...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

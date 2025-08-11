@@ -1,0 +1,16 @@
+# 日志文件
+*.log
+
+# 依赖包文件夹 (非常重要，绝不能上传)
+node_modules/
+client/node_modules/
+
+# 环境变量文件 (包含所有密钥，极其重要)
+.env
+
+# SQLite 数据库文件 (不上传实际数据)
+*.sqlite
+
+# Mac 和 Windows 系统文件
+.DS_Store
+Thumbs.db
