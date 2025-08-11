@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const shareFormSection = document.getElementById('share-form-section');
     const shareForm = document.getElementById('share-form');
     const proxyListDiv = document.getElementById('proxy-list');
-    const API_BASE_URL = 'http://127.0.0.1:3001/api';
+    const API_BASE_URL = '/api';
 
     let currentUser = null; 
 

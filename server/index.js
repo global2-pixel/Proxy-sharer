@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
@@ -12,10 +13,11 @@ const app = express();
 
 // --- 中间件配置 ---
 app.use(cors({
-    origin: 'http://127.0.0.1:5500', // 明确指定允许的前端源地址
-    credentials: true                // 允许服务器接收并处理 cookie
+    origin: process.env.CORS_ORIGIN || 'http://127.0.0.1:5500', // 优先使用环境变量
+    credentials: true
 }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'client')));
 
 // 1. 配置 Session
 app.use(session({
@@ -34,8 +36,8 @@ app.use('/api', proxyRoutes); // 使用代理节点 API 路由
 app.use('/api', authRoutes);  // 使用认证路由
 
 // --- 根路由和启动 ---
-app.get('/', (req, res) => {
-    res.send('代理分享程序后端已启动！认证功能已配置。');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3001;

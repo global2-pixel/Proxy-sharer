@@ -1,0 +1,16 @@
+{
+  "name": "proxy-sharer-app",
+  "version": "1.0.0",
+  "description": "A full-stack proxy sharing application.",
+  "main": "server/index.js",
+  "scripts": {
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install",
+    "install:all": "npm run install:server && npm run install:client",
+    "build:client": "cd client && .\\node_modules\\.bin\\tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

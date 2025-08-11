@@ -12,7 +12,7 @@ passport.use('linuxdo', new OAuth2Strategy({
     tokenURL: 'https://connect.linux.do/oauth2/token',
     clientID: process.env.LINUXDO_CLIENT_ID,
     clientSecret: process.env.LINUXDO_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3001/api/auth/linuxdo/callback"
+    callbackURL: process.env.CALLBACK_URL || "http://127.0.0.1:3001/api/auth/linuxdo/callback"
   },
   // 这个函数在获取到 access token 后被调用
   (accessToken, refreshToken, params, done) => {
@@ -81,7 +81,7 @@ router.get('/auth/linuxdo', passport.authenticate('linuxdo'));
 // 用户在 Linux.do 授权后，会被重定向回这里
 router.get('/auth/linuxdo/callback',
   passport.authenticate('linuxdo', {
-    successRedirect: 'http://127.0.0.1:5500/client', // 成功后跳回 Live Server 的地址
+    successRedirect: process.env.BASE_URL || 'http://127.0.0.1:5500',
     failureRedirect: '/login-failed'
   })
 );
