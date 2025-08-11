@@ -81,14 +81,14 @@
 ### **环境变量**
 你需要创建一个 `.env` 文件，并填入以下变量：
 
-.env
+'''bash
 用于加密 session 的密钥，请使用一个长且随机的字符串
 SESSION_SECRET=your_super_long_random_session_secret
 
 从 Linux.do 获取的 OAuth 应用凭证
 LINUXDO_CLIENT_ID=your_linuxdo_client_id
 LINUXDO_CLIENT_SECRET=your_linuxdo_client_secret
-
+'''
 ---
 
 ## 部署
