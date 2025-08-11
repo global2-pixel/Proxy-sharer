@@ -80,3 +80,30 @@
 
 ### **环境变量**
 你需要创建一个 `.env` 文件，并填入以下变量：
+
+.env
+用于加密 session 的密钥，请使用一个长且随机的字符串
+SESSION_SECRET=your_super_long_random_session_secret
+
+从 Linux.do 获取的 OAuth 应用凭证
+LINUXDO_CLIENT_ID=your_linuxdo_client_id
+LINUXDO_CLIENT_SECRET=your_linuxdo_client_secret
+
+---
+
+## 部署
+
+本项目已配置为可以轻松部署到 [Render.com](https://render.com/)。主要步骤如下：
+1.  将代码推送到 GitHub 仓库。
+2.  在 Render 创建一个新的 **Web Service**，关联此仓库。
+3.  设置构建命令为 `npm run install:all && npm run build:client`。
+4.  设置启动命令为 `npm start`。
+5.  添加一个**持久化磁盘 (Disk)**，挂载路径为 `/var/data`，用于存放 SQLite 数据库。
+6.  在 **Environment Variables** 中设置生产环境所需的密钥（同 `.env` 文件）。
+7.  将 Render 提供的公开 URL 配置到你的 Linux.do 应用的回调地址中。
+
+---
+
+## 📜 许可证
+
+本项目采用 [MIT License](LICENSE)。
